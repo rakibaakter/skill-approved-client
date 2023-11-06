@@ -2,7 +2,7 @@ import tick from "../../assets/tick.gif";
 
 const Logo = () => {
   return (
-    <div className="flex items-center md:text-xl font-semibold">
+    <div className="flex  items-center md:text-xl font-semibold">
       <img src={tick} alt="" className="h-12 w-12 md:h-16 md:w-16" />
       <span className="md:mb-2">
         Skill

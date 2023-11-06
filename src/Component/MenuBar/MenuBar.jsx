@@ -30,7 +30,7 @@ const MenuBar = () => {
         <div className="dropdown">
           <label
             tabIndex={0}
-            className="btn btn-ghost text-cyan-900 text-2xl lg:hidden"
+            className="btn btn-ghost text-cyan-700 text-2xl lg:hidden"
           >
             <GiHamburgerMenu />
           </label>
