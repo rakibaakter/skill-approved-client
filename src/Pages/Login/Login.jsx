@@ -2,8 +2,12 @@ import { Link } from "react-router-dom";
 import PrimaryButton from "../../Component/PrimaryButton/PrimaryButton";
 import loginImg from "../../assets/login.jpg";
 import { FcGoogle } from "react-icons/fc";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { useState } from "react";
 
 const Login = () => {
+  const [isShow, setIsShow] = useState(false);
+
   return (
     <div className="hero pt-10">
       <div className="hero-content flex-col md:flex-row">
@@ -30,20 +34,28 @@ const Login = () => {
                 <input
                   type="email"
                   placeholder="email"
+                  name="email"
                   className="input input-bordered"
                   required
                 />
               </div>
-              <div className="form-control">
+              <div className="form-control relative ">
                 <label className="label">
                   <span className="label-text">Password</span>
                 </label>
                 <input
-                  type="password"
+                  type={isShow ? "text" : "password"}
                   placeholder="password"
-                  className="input input-bordered"
+                  name="password"
+                  className="input input-bordered "
                   required
                 />
+                <button
+                  onClick={() => setIsShow(!isShow)}
+                  className="absolute top-2/3 right-4"
+                >
+                  {isShow ? <FaEyeSlash /> : <FaEye />}
+                </button>
               </div>
               <div className="form-control mt-6">
                 <PrimaryButton>
