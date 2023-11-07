@@ -1,4 +1,4 @@
-import HomeBanner from "../../Component/PageBanner/HomeBanner";
+import HomeBanner from "./HomeComponent/HomeBanner";
 
 const Home = () => {
   return (
