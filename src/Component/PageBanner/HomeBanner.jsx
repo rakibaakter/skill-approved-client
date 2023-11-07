@@ -16,8 +16,8 @@ const HomeBanner = () => {
             </h2>
             <p className="text-xl text-cyan-900">
               Skill Approved is here to reach your skill . We here providing
-              multi-categories job so that you can prove your skill to the job
-              marketplace.
+              multi-categories job of multiple company so that you can prove
+              your skill to the job marketplace.
             </p>
           </div>
           <PrimaryButton>Get Started</PrimaryButton>
