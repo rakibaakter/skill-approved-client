@@ -1,6 +1,8 @@
 import { GiHamburgerMenu } from "react-icons/gi";
 import { Link, NavLink } from "react-router-dom";
 import Logo from "../Logo/Logo";
+import useAuthInfoHook from "../../Hooks/useAuthInfoHook";
+import profile from "../../assets/profile.jpg";
 // import { motion } from "framer-motion";
 // import { useState } from "react";
 
@@ -11,6 +13,8 @@ const MenuBar = () => {
   //   open: { opacity: 1, x: 0 },
   //   closed: { opacity: 1, x: "-100%" },
   // };
+
+  const { user, logOut } = useAuthInfoHook();
 
   const listItems = (
     <>
@@ -64,8 +68,26 @@ const MenuBar = () => {
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1 text-xl">{listItems}</ul>
       </div>
-      <div className="navbar-end text-xl font-bold ">
-        <Link to="/login">Log In</Link>
+      <div className="navbar-end ">
+        {user ? (
+          <div className="flex justify-center flex-col md:flex-row md:gap-3">
+            <span className="">
+              <img
+                className="h-6 w-6 md:h-10 md:w-10 rounded-full "
+                src={user.photoURL ? user.photoURL : profile}
+                alt=""
+              />
+              <span className="text-center ">{user.displayName}</span>
+            </span>
+            <Link onClick={logOut} className="md:mt-2">
+              <a className="text-accent font-semibold md:text-xl ">Sign Out</a>
+            </Link>
+          </div>
+        ) : (
+          <Link to="/login">
+            <a className="text-accent font-semibold text-xl ">Sign In</a>
+          </Link>
+        )}
       </div>
     </div>
   );

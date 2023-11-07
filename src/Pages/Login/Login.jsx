@@ -1,13 +1,47 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import PrimaryButton from "../../Component/PrimaryButton/PrimaryButton";
 import loginImg from "../../assets/login.jpg";
 import { FcGoogle } from "react-icons/fc";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useState } from "react";
 import PageTitle from "../../Component/PageTitle/PageTitle";
+import useAuthInfoHook from "../../Hooks/useAuthInfoHook";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Login = () => {
   const [isShow, setIsShow] = useState(false);
+  const { logInbyEmail, signInByGoogle } = useAuthInfoHook();
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const handleLogIn = (e) => {
+    e.preventDefault();
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+    // console.log(email, password);
+
+    logInbyEmail(email, password)
+      .then((res) => {
+        console.log(res.user);
+        toast.success("logged in successfully !", {
+          position: toast.POSITION.BOTTOM_CENTER,
+        });
+
+        // navigate after login
+        navigate(location?.state ? location.state : "/");
+      })
+      .catch((error) => {
+        toast.error(error.message, {
+          position: toast.POSITION.BOTTOM_CENTER,
+        });
+      });
+  };
+
+  const handleSignInByGoogle = () => {
+    signInByGoogle();
+    navigate(location?.state ? location.state : "/");
+  };
 
   return (
     <div className="hero pt-10">
@@ -19,14 +53,17 @@ const Login = () => {
           <div>
             <PageTitle>Login Now!</PageTitle>
 
-            <button className="my-8 w-full btn flex justify-center gap-2 capitalize text-cyan-700">
+            <button
+              onClick={handleSignInByGoogle}
+              className="my-8 w-full btn flex justify-center gap-2 capitalize text-cyan-700"
+            >
               <span className="text-2xl">
                 <FcGoogle />
               </span>
               <span>Continue With Google</span>
             </button>
             <div className="divider">Or continue with useremail</div>
-            <form>
+            <form onSubmit={handleLogIn}>
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Email</span>
@@ -62,6 +99,7 @@ const Login = () => {
                   <input type="submit" value="Login" />
                 </PrimaryButton>
               </div>
+              <ToastContainer />
             </form>
 
             <p className="text-center my-4">
