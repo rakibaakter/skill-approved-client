@@ -2,18 +2,15 @@
   "categories": [
     {
       "id": 1,
-      "category_name": "Web Development",
-      "icon": "fa-code"
+      "category_name": "Web Development"
     },
     {
       "id": 2,
-      "category_name": "Digital Marketing",
-      "icon": "fa-bullhorn"
+      "category_name": "Digital Marketing"
     },
     {
       "id": 3,
-      "category_name": "Graphic Design",
-      "icon": "fa-paint-brush"
+      "category_name": "Graphic Design"
     }
   ]
 }

@@ -1,5 +1,5 @@
-import bannerImg from "../../assets/banner.jpg";
-import PrimaryButton from "../PrimaryButton/PrimaryButton";
+import bannerImg from "../../../assets/banner.jpg";
+import PrimaryButton from "../../../Component/PrimaryButton/PrimaryButton";
 
 const HomeBanner = () => {
   return (
