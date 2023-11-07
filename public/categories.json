@@ -1,0 +1,19 @@
+{
+  "categories": [
+    {
+      "id": 1,
+      "category_name": "Web Development",
+      "icon": "fa-code"
+    },
+    {
+      "id": 2,
+      "category_name": "Digital Marketing",
+      "icon": "fa-bullhorn"
+    },
+    {
+      "id": 3,
+      "category_name": "Graphic Design",
+      "icon": "fa-paint-brush"
+    }
+  ]
+}
