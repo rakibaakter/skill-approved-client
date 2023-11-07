@@ -15,7 +15,7 @@ const Login = () => {
         <div className="md:w-1/2">
           <img src={loginImg} alt="" />
         </div>
-        <div className="card w-full md:w-1/2   md:shadow-2xl bg-base-100 -mt-16 md:mt-10 card-body ">
+        <div className="card w-full md:w-1/2 md:shadow-2xl bg-base-100 -mt-16 md:mt-10 card-body ">
           <div>
             <PageTitle>Login Now!</PageTitle>
 
