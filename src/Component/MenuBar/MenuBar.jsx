@@ -17,7 +17,7 @@ const MenuBar = () => {
       <li>
         <NavLink
           to="/"
-          className={({ isActive }) => isActive && "text-cyan-700 font-bold "}
+          className={({ isActive }) => isActive && "text-cyan-400 font-bold "}
         >
           Home
         </NavLink>
@@ -25,7 +25,7 @@ const MenuBar = () => {
       <li>
         <NavLink
           to="/add-job"
-          className={({ isActive }) => isActive && "bg-cyan-900 text-white"}
+          className={({ isActive }) => isActive && "text-cyan-400 font-bold "}
         >
           Add Job
         </NavLink>

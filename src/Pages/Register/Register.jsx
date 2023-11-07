@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 import PrimaryButton from "../../Component/PrimaryButton/PrimaryButton";
 import loginImg from "../../assets/login.jpg";
-import { FcGoogle } from "react-icons/fc";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useState } from "react";
+import PageTitle from "../../Component/PageTitle/PageTitle";
 
 const Register = () => {
   const [isShow, setIsShow] = useState(false);
@@ -16,9 +16,7 @@ const Register = () => {
         </div>
         <div className="card w-full md:w-1/2   md:shadow-2xl bg-base-100 -mt-16 md:mt-10 card-body ">
           <div>
-            <h1 className="text-3xl text-cyan-700 text-center font-bold">
-              Sign Up Now!
-            </h1>
+            <PageTitle>Sign Up Now!</PageTitle>
 
             <form>
               <div className="form-control">

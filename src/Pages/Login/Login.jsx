@@ -4,6 +4,7 @@ import loginImg from "../../assets/login.jpg";
 import { FcGoogle } from "react-icons/fc";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useState } from "react";
+import PageTitle from "../../Component/PageTitle/PageTitle";
 
 const Login = () => {
   const [isShow, setIsShow] = useState(false);
@@ -16,9 +17,8 @@ const Login = () => {
         </div>
         <div className="card w-full md:w-1/2   md:shadow-2xl bg-base-100 -mt-16 md:mt-10 card-body ">
           <div>
-            <h1 className="text-3xl text-cyan-700 text-center font-bold">
-              Login now!
-            </h1>
+            <PageTitle>Login Now!</PageTitle>
+
             <button className="my-8 w-full btn flex justify-center gap-2 capitalize text-cyan-700">
               <span className="text-2xl">
                 <FcGoogle />
