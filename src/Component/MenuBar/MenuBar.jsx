@@ -1,16 +1,16 @@
 import { GiHamburgerMenu } from "react-icons/gi";
 import { Link, NavLink } from "react-router-dom";
 import Logo from "../Logo/Logo";
-import { motion } from "framer-motion";
-import { useState } from "react";
+// import { motion } from "framer-motion";
+// import { useState } from "react";
 
 const MenuBar = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  // const [isOpen, setIsOpen] = useState(false);
 
-  const variants = {
-    open: { opacity: 1, x: 0 },
-    closed: { opacity: 1, x: "-100%" },
-  };
+  // const variants = {
+  //   open: { opacity: 1, x: 0 },
+  //   closed: { opacity: 1, x: "-100%" },
+  // };
 
   const listItems = (
     <>
@@ -34,11 +34,11 @@ const MenuBar = () => {
   );
 
   return (
-    <div className="navbar bg-cyan-500 text-white fixed px-2 md:px-10 lg:px-20">
+    <div className="navbar bg-cyan-700 text-white fixed z-10 px-2 md:px-10 lg:px-20">
       <div className="navbar-start">
         <div className="dropdown">
-          <label tabIndex={0} className=" text-cyan-700 text-2xl lg:hidden">
-            <motion.nav
+          <label tabIndex={0} className=" text-cyan-900 text-2xl lg:hidden">
+            {/* <motion.nav
               animate={isOpen ? "open" : "closed"}
               variants={variants}
             >
@@ -49,16 +49,23 @@ const MenuBar = () => {
               >
                 {listItems}
               </ul>
-            </motion.nav>
+            </motion.nav> */}
+            <GiHamburgerMenu />
           </label>
+          <ul
+            tabIndex={0}
+            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 text-xl text-black"
+          >
+            {listItems}
+          </ul>
         </div>
         <Logo />
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1 text-xl">{listItems}</ul>
       </div>
-      <div className="navbar-end text-xl font-bold text-cyan-700 ">
-        <Link>Log In</Link>
+      <div className="navbar-end text-xl font-bold ">
+        <Link to="/login">Log In</Link>
       </div>
     </div>
   );
