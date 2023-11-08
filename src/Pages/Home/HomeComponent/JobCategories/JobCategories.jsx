@@ -16,11 +16,9 @@ const JobCategories = () => {
     setSelectedCategory(name);
   };
   useEffect(() => {
-    axios
-      .get(`http://localhost:5000/postedJob/${selectedCategory}`)
-      .then((res) => {
-        setCategoryJob(res.data);
-      });
+    fetch(`http://localhost:5000/postedJob?category=${selectedCategory}`)
+      .then((res) => res.json())
+      .then((data) => setCategoryJob(data));
   }, [selectedCategory]);
 
   return (

@@ -24,7 +24,7 @@ const JobCard = ({ job }) => {
         </span>
         <p>{description.substring(0, 400)}...</p>
         <div className="card-actions ">
-          <Link>
+          <Link to={`/job-details/${_id}`}>
             <PrimaryButton>Bid Now</PrimaryButton>
           </Link>
         </div>
