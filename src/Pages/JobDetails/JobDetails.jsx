@@ -1,7 +1,12 @@
 import { useLoaderData } from "react-router-dom";
 import PageBanner from "../../Component/PageBanner/PageBanner";
+import PrimaryButton from "../../Component/PrimaryButton/PrimaryButton";
+import useAuthInfoHook from "../../Hooks/useAuthInfoHook";
+import PageTitle from "../../Component/PageTitle/PageTitle";
 
 const JobDetails = () => {
+  const { user } = useAuthInfoHook();
+
   const selectedJob = useLoaderData();
   const {
     _id,
@@ -35,12 +40,82 @@ const JobDetails = () => {
               {describe}
             </li>
           ))}
-          <div className="card-actions ">
-            {/* <Link to={`/job-details/${_id}`}>
-            <PrimaryButton>Bid Now</PrimaryButton>
-          </Link> */}
-          </div>
         </div>
+      </div>
+      <div className="card w-full lg:w-2/3 py-10 mx-auto px-2 md:px-10 lg:px-20 ">
+        <form className="card-body space-y-4">
+          <PageTitle>Place Your Bid</PageTitle>
+          {/*  salary and deadline */}
+          <div className="flex flex-col md:flex-row gap-6 md:gap-2">
+            {/* deadline */}
+            <div className="form-control md:w-1/2">
+              <label className="input-group ">
+                <span className="bg-cyan-700 text-white md:w-1/3">Salary</span>
+                <input
+                  type="text"
+                  placeholder="$ bid salay"
+                  name="bidSalary"
+                  className="input input-bordered border-cyan-700 w-full"
+                />
+              </label>
+            </div>
+            {/* Deadline */}
+            <div className="form-control md:w-1/2">
+              <label className="input-group ">
+                <span className="bg-cyan-700 text-white w-2/3">DeadLine</span>
+                <input
+                  type="date"
+                  name="bidDeadline"
+                  className="input input-bordered border-cyan-700 w-full"
+                />
+              </label>
+            </div>
+          </div>
+          {/* user email, poster email */}
+          <div className="flex flex-col md:flex-row gap-6 md:gap-2">
+            {/* user */}
+            <div className="form-control md:w-1/2">
+              <label className="input-group ">
+                <span className="bg-cyan-700 text-white md:w-1/3">User</span>
+                <input
+                  type="email"
+                  defaultValue={user.email}
+                  name="userEmail"
+                  disabled
+                  className="input input-bordered border-cyan-700 w-full"
+                />
+              </label>
+            </div>
+            {/* poster */}
+            <div className="form-control md:w-1/2">
+              <label className="input-group ">
+                <span className="bg-cyan-700 text-white md:w-1/3">Buyer</span>
+                <input
+                  type="email"
+                  defaultValue={posterEmail}
+                  name="buyerEmail"
+                  disabled
+                  className="input input-bordered border-cyan-700 w-full"
+                />
+              </label>
+            </div>
+          </div>
+
+          <div className="form-control mt-6">
+            {user.email === posterEmail ? (
+              <input
+                type="submit"
+                value="Bid Now (disable)"
+                disabled
+                className="btn"
+              ></input>
+            ) : (
+              <PrimaryButton>
+                <input type="submit" value="Bid Now"></input>
+              </PrimaryButton>
+            )}
+          </div>
+        </form>
       </div>
     </div>
   );
