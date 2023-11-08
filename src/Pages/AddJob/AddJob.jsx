@@ -6,6 +6,7 @@ import useCategoryData from "../../Hooks/useCategoryData";
 import Swal from "sweetalert2";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 const AddJob = () => {
   const { user } = useAuthInfoHook();
@@ -62,6 +63,9 @@ const AddJob = () => {
   }
   return (
     <div>
+      <Helmet>
+        <title>Skill-Approved|add-job</title>
+      </Helmet>
       <PageBanner> New Job Requirement</PageBanner>
       <div className="card w-full lg:w-2/3 py-10 mx-auto px-2 md:px-10 lg:px-20 ">
         <form onSubmit={handleAddJob} className="card-body space-y-4">

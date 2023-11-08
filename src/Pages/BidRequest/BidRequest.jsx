@@ -2,9 +2,11 @@ import { useEffect, useState } from "react";
 import PageBanner from "../../Component/PageBanner/PageBanner";
 import useAuthInfoHook from "../../Hooks/useAuthInfoHook";
 import axios from "axios";
+import { Helmet } from "react-helmet-async";
 
 const BidRequest = () => {
-  const { user } = useAuthInfoHook();
+  const { user, status, setStatus } = useAuthInfoHook();
+  const [isdisbale, setDisable] = useState(false);
   const [mybids, setMybids] = useState([]);
 
   useEffect(() => {
@@ -14,8 +16,17 @@ const BidRequest = () => {
         setMybids(res.data);
       });
   }, [user]);
+
+  const handleRejectBtn = () => {
+    setStatus("rejected");
+    setDisable(true);
+  };
+
   return (
     <div>
+      <Helmet>
+        <title>Skill-Approved|bid-requests</title>
+      </Helmet>
       <PageBanner>My Bid Request</PageBanner>
       <div className="overflow-x-auto py-4 px-2 text-center md:px-10 lg:px-20">
         <table className="table table-xs">
@@ -37,12 +48,19 @@ const BidRequest = () => {
                 <td>{bid.userEmail}</td>
                 <td>{bid.bidDeadline}</td>
                 <td>${bid.bidSalary}</td>
-                <td>Pending</td>
+                <td>{bid.status}</td>
                 <td>
-                  <button className="btn btn-success  ">Accept</button>
+                  <button
+                    onClick={() => handleAcceptBtn(bid._id)}
+                    className="btn btn-success "
+                  >
+                    Accept
+                  </button>
                 </td>
                 <td>
-                  <button className="btn btn-error  ">Reject</button>
+                  <button onClick={handleRejectBtn} className="btn btn-error  ">
+                    Reject
+                  </button>
                 </td>
               </tr>
             ))}

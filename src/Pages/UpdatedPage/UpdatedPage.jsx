@@ -5,6 +5,7 @@ import useAuthInfoHook from "../../Hooks/useAuthInfoHook";
 import useCategoryData from "../../Hooks/useCategoryData";
 import Swal from "sweetalert2";
 import axios from "axios";
+import { Helmet } from "react-helmet-async";
 
 const UpdatedPage = () => {
   const { user } = useAuthInfoHook();
@@ -67,6 +68,9 @@ const UpdatedPage = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>Skill-Approved|update-job</title>
+      </Helmet>
       <PageBanner> Update Job</PageBanner>
       <div className="card w-full lg:w-2/3 py-10 mx-auto px-2 md:px-10 lg:px-20 ">
         <form onSubmit={handleUpdate} className="card-body space-y-4">

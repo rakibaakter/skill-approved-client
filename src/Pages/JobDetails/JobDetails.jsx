@@ -6,6 +6,7 @@ import PageTitle from "../../Component/PageTitle/PageTitle";
 import { useState } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const JobDetails = () => {
   const { user } = useAuthInfoHook();
@@ -39,6 +40,7 @@ const JobDetails = () => {
       posterEmail,
       bidSalary,
       bidDeadline,
+      status: "pending",
     };
     console.log(bidRequest);
 
@@ -70,6 +72,9 @@ const JobDetails = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>Skill-Approved|job-details</title>
+      </Helmet>
       <PageBanner>Job Details</PageBanner>
       <div className="card  bg-base-100 shadow-xl py-4 px-2 text-center md:px-10 lg:px-20">
         <div className="card-body text-left">

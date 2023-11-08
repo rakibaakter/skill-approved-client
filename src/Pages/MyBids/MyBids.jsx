@@ -2,9 +2,10 @@ import { useEffect, useState } from "react";
 import PageBanner from "../../Component/PageBanner/PageBanner";
 import useAuthInfoHook from "../../Hooks/useAuthInfoHook";
 import axios from "axios";
+import { Helmet } from "react-helmet-async";
 
 const MyBids = () => {
-  const { user } = useAuthInfoHook();
+  const { user, status, setStatus } = useAuthInfoHook();
   const [mybids, setMybids] = useState([]);
 
   useEffect(() => {
@@ -18,6 +19,9 @@ const MyBids = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>Skill-Approved|my-bids</title>
+      </Helmet>
       <PageBanner>My Bids</PageBanner>
       <div className="overflow-x-auto py-4 px-2 text-center md:px-10 lg:px-20">
         <table className="table table-xs">
@@ -38,13 +42,20 @@ const MyBids = () => {
                 <td>{user.email}</td>
                 <td>{bid.posterEmail}</td>
                 <td>{bid.bidDeadline}</td>
+                <td>{status}</td>
                 <td>
-                  <button className="btn btn-info">Pending</button>
-                </td>
-                <td>
-                  <button className="btn btn-success btn-disabled ">
-                    Complete
-                  </button>
+                  {status === "in progress" ? (
+                    <button
+                      onClick={() => setStatus("complete")}
+                      className="btn-accent"
+                    >
+                      Complete
+                    </button>
+                  ) : (
+                    <button disabled className="btn-accent">
+                      Complete
+                    </button>
+                  )}
                 </td>
               </tr>
             ))}

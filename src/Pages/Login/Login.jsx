@@ -8,6 +8,7 @@ import PageTitle from "../../Component/PageTitle/PageTitle";
 import useAuthInfoHook from "../../Hooks/useAuthInfoHook";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Helmet } from "react-helmet-async";
 
 const Login = () => {
   const [isShow, setIsShow] = useState(false);
@@ -45,6 +46,9 @@ const Login = () => {
 
   return (
     <div className="hero pt-10">
+      <Helmet>
+        <title>Skill-Approved|login</title>
+      </Helmet>
       <div className="hero-content flex-col md:flex-row">
         <div className="md:w-1/2">
           <img src={loginImg} alt="" />

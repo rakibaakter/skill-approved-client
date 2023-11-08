@@ -5,6 +5,7 @@ import PageBanner from "../../Component/PageBanner/PageBanner";
 import { Link } from "react-router-dom";
 import PrimaryButton from "../../Component/PrimaryButton/PrimaryButton";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const MyPostedJob = () => {
   const { user } = useAuthInfoHook();
@@ -51,6 +52,9 @@ const MyPostedJob = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>Skill-Approved|posted-job</title>
+      </Helmet>
       <PageBanner>My Posted Jobs</PageBanner>
       <div className="grid lg:grid-cols-2 gap-4">
         {myPostedJob.map((job) => (
