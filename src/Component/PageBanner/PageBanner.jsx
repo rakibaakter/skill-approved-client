@@ -10,7 +10,7 @@ const PageBanner = ({ children }) => {
         backgroundSize: "cover",
       }}
     >
-      <div className="px-2 pt-10 lg:pt-32 md:px-10 lg:px-20 ">
+      <div className="px-2 flex items-center h-[40vh] md:px-10 lg:px-20 ">
         <h1 className="text-3xl md:text-5xl text-cyan-900 font-bold ">
           {children}
         </h1>
