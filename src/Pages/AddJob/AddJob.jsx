@@ -38,12 +38,15 @@ const AddJob = () => {
     axios
       .post("http://localhost:5000/postedJob", newJob)
       .then((res) => {
-        Swal.fire({
-          icon: "success",
-          title: "Your job has been posted",
-          showConfirmButton: true,
-        });
-        setRedirect(true);
+        console.log(res);
+        if (res.data.insertedId) {
+          Swal.fire({
+            icon: "success",
+            title: "Your job has been posted",
+            showConfirmButton: true,
+          });
+          setRedirect(true);
+        }
       })
       .catch((error) => {
         Swal.fire({

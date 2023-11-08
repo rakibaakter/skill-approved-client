@@ -2,15 +2,15 @@
   "categories": [
     {
       "id": 1,
-      "category_name": "Web Development"
+      "category_name": "Web-Development"
     },
     {
       "id": 2,
-      "category_name": "Digital Marketing"
+      "category_name": "Digital-Marketing"
     },
     {
       "id": 3,
-      "category_name": "Graphic Design"
+      "category_name": "Graphic-Design"
     }
   ]
 }

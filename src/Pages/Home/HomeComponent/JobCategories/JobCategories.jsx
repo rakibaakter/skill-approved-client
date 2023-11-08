@@ -1,17 +1,27 @@
-import { Tab, TabList, Tabs } from "react-tabs";
+import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import useCategoryData from "../../../../Hooks/useCategoryData";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import JobCard from "./JobCard";
 
 const JobCategories = () => {
   const categories = useCategoryData();
-  const [selectedCategory, setSelectedCategory] = useState("Web Development");
+  const [selectedCategory, setSelectedCategory] = useState("Web-Development");
   console.log(selectedCategory);
+  const [categoryJob, setCategoryJob] = useState([]);
 
   const handleShowCategoryData = (name) => {
     setSelectedCategory(name);
   };
+  useEffect(() => {
+    axios
+      .get(`http://localhost:5000/postedJob/${selectedCategory}`)
+      .then((res) => {
+        setCategoryJob(res.data);
+      });
+  }, [selectedCategory]);
 
   return (
     <div className="py-16 px-2 text-center md:px-10 lg:px-20">
@@ -28,6 +38,15 @@ const JobCategories = () => {
             </Tab>
           ))}
         </TabList>
+        {categories.map((category) => (
+          <TabPanel key={category.id}>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+              {categoryJob.map((job) => (
+                <JobCard key={job._id} job={job} />
+              ))}
+            </div>
+          </TabPanel>
+        ))}
       </Tabs>
     </div>
   );
