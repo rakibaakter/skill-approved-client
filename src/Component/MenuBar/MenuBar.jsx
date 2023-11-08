@@ -34,6 +34,30 @@ const MenuBar = () => {
           Add Job
         </NavLink>
       </li>
+      <li>
+        <NavLink
+          to="/my-posted-job"
+          className={({ isActive }) => isActive && "text-cyan-400 font-bold "}
+        >
+          My Posted Job
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="/my-bids"
+          className={({ isActive }) => isActive && "text-cyan-400 font-bold "}
+        >
+          My Bids
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="/bid-requests"
+          className={({ isActive }) => isActive && "text-cyan-400 font-bold "}
+        >
+          Bid Requests
+        </NavLink>
+      </li>
     </>
   );
 

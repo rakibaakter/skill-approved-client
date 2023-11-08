@@ -137,11 +137,12 @@ const Register = () => {
             </form>
 
             <p className="text-center my-4">
-              {`Don't have any account?`}
-              <Link to="/register" className="text-blue-600">
+              {`Already have account?`}
+              <Link to="/login" className="text-blue-600">
                 {" "}
-                SignUp Now
-              </Link>
+                Sign In
+              </Link>{" "}
+              Now
             </p>
           </div>
         </div>

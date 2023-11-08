@@ -1,24 +1,76 @@
+import axios from "axios";
 import PageBanner from "../../Component/PageBanner/PageBanner";
 import PrimaryButton from "../../Component/PrimaryButton/PrimaryButton";
+import useAuthInfoHook from "../../Hooks/useAuthInfoHook";
 import useCategoryData from "../../Hooks/useCategoryData";
+import Swal from "sweetalert2";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const AddJob = () => {
+  const { user } = useAuthInfoHook();
   const categories = useCategoryData();
-  console.log(categories);
+  const [isRedirect, setRedirect] = useState(false);
+  const navigate = useNavigate();
 
+  const handleAddJob = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const posterEmail = form.email.value;
+    const title = form.title.value;
+    const deadline = form.deadline.value;
+    const category = form.category.value;
+    const minSalary = form.minSalary.value;
+    const maxSalary = form.maxSalary.value;
+    const description = form.description.value;
+
+    const newJob = {
+      posterEmail,
+      title,
+      deadline,
+      category,
+      minSalary,
+      maxSalary,
+      description,
+    };
+    console.log(newJob);
+
+    axios
+      .post("http://localhost:5000/postedJob", newJob)
+      .then((res) => {
+        Swal.fire({
+          icon: "success",
+          title: "Your job has been posted",
+          showConfirmButton: true,
+        });
+        setRedirect(true);
+      })
+      .catch((error) => {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: error,
+        });
+      });
+  };
+
+  if (isRedirect) {
+    navigate("/my-posted-job");
+  }
   return (
     <div>
       <PageBanner> New Job Requirement</PageBanner>
       <div className="card w-full lg:w-2/3 py-10 mx-auto px-2 md:px-10 lg:px-20 ">
-        <form className="card-body space-y-4">
+        <form onSubmit={handleAddJob} className="card-body space-y-4">
           {/* email */}
           <div className="form-control">
             <label className="input-group ">
               <span className="bg-cyan-700 text-white md:w-1/6">Email</span>
               <input
                 type="email"
-                placeholder="info@site.com"
+                defaultValue={user.email}
                 name="email"
+                disabled
                 className="input input-bordered border-cyan-700 w-full"
               />
             </label>
@@ -30,7 +82,7 @@ const AddJob = () => {
               <input
                 type="text"
                 placeholder="job title"
-                name="jobTitle"
+                name="title"
                 className="input input-bordered border-cyan-700 w-full"
               />
             </label>
@@ -45,7 +97,7 @@ const AddJob = () => {
                 </span>
                 <input
                   type="date"
-                  name="date"
+                  name="deadline"
                   className="input input-bordered border-cyan-700 w-full"
                 />
               </label>
@@ -56,7 +108,10 @@ const AddJob = () => {
                 <span className="bg-cyan-700 text-white md:w-1/3">
                   Category
                 </span>
-                <select className="select select-info w-full max-w-xs">
+                <select
+                  name="category"
+                  className="select select-info w-full max-w-xs"
+                >
                   <option disabled selected>
                     Select Category
                   </option>
@@ -101,7 +156,8 @@ const AddJob = () => {
                 Job Description
               </span>
               <textarea
-                className="textarea textarea-bordered border-cyan-700 w-full lg:w-1/3"
+                name="description"
+                className="textarea textarea-bordered border-cyan-700 w-full "
                 placeholder="Job Description"
               ></textarea>
             </label>
