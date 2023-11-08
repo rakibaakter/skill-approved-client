@@ -3,9 +3,12 @@ import PrimaryButton from "../../../Component/PrimaryButton/PrimaryButton";
 
 const HomeBanner = () => {
   return (
-    <div className="hero  ">
+    <div className="hero bg-base-200 ">
       <div className="hero-content flex-col md:flex-row-reverse px-4 md:px-10 ">
-        <img src={bannerImg} className="max-w-[280px] lg:max-w-md " />
+        <img
+          src={bannerImg}
+          className="max-w-[280px] lg:max-w-md rounded-full "
+        />
         <div>
           <h1 className="text-3xl lg:text-5xl font-bold text-cyan-900">
             Skill Approved

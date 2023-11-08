@@ -3,7 +3,7 @@ import question from "../../../assets/question.png";
 const FAQ = () => {
   return (
     <div
-      className="hero min-h-[70vh] my-10"
+      className="hero min-h-[70vh] mt-10"
       style={{
         backgroundImage: `url(${question})`,
       }}
