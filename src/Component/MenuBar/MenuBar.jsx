@@ -3,16 +3,16 @@ import { Link, NavLink } from "react-router-dom";
 import Logo from "../Logo/Logo";
 import useAuthInfoHook from "../../Hooks/useAuthInfoHook";
 import profile from "../../assets/profile.jpg";
-// import { motion } from "framer-motion";
-// import { useState } from "react";
+import { motion } from "framer-motion";
+import { useState } from "react";
 
 const MenuBar = () => {
-  // const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
-  // const variants = {
-  //   open: { opacity: 1, x: 0 },
-  //   closed: { opacity: 1, x: "-100%" },
-  // };
+  const variants = {
+    open: { opacity: 1, x: 0 },
+    closed: { opacity: 1, x: "-100%" },
+  };
 
   const { user, logOut } = useAuthInfoHook();
 
@@ -66,7 +66,7 @@ const MenuBar = () => {
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className=" text-cyan-900 text-2xl lg:hidden">
-            {/* <motion.nav
+            <motion.nav
               animate={isOpen ? "open" : "closed"}
               variants={variants}
             >
@@ -77,15 +77,15 @@ const MenuBar = () => {
               >
                 {listItems}
               </ul>
-            </motion.nav> */}
-            <GiHamburgerMenu />
+            </motion.nav>
+            {/* <GiHamburgerMenu /> */}
           </label>
-          <ul
+          {/* <ul
             tabIndex={0}
             className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 text-xl text-black"
           >
             {listItems}
-          </ul>
+          </ul> */}
         </div>
         <Logo />
       </div>
