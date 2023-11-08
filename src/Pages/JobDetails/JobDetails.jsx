@@ -1,13 +1,18 @@
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import PageBanner from "../../Component/PageBanner/PageBanner";
 import PrimaryButton from "../../Component/PrimaryButton/PrimaryButton";
 import useAuthInfoHook from "../../Hooks/useAuthInfoHook";
 import PageTitle from "../../Component/PageTitle/PageTitle";
+import { useState } from "react";
+import axios from "axios";
+import Swal from "sweetalert2";
 
 const JobDetails = () => {
   const { user } = useAuthInfoHook();
-
   const selectedJob = useLoaderData();
+  const [isRedirect, setRedirect] = useState(false);
+  const navigate = useNavigate();
+
   const {
     _id,
     title,
@@ -20,7 +25,48 @@ const JobDetails = () => {
   } = selectedJob;
 
   const descriptionArray = description.split(":");
-  console.log(descriptionArray);
+  // console.log(descriptionArray);
+
+  const handleBid = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const bidSalary = form.bidSalary.value;
+    const bidDeadline = form.bidDeadline.value;
+
+    const bidRequest = {
+      title,
+      userEmail: user.email,
+      posterEmail,
+      bidSalary,
+      bidDeadline,
+    };
+    console.log(bidRequest);
+
+    axios
+      .post("http://localhost:5000/bid", bidRequest)
+      .then((res) => {
+        console.log(res);
+        if (res.data.insertedId) {
+          Swal.fire({
+            icon: "success",
+            title: "Your job has been bidded",
+            showConfirmButton: true,
+          });
+          setRedirect(true);
+        }
+      })
+      .catch((error) => {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: error,
+        });
+      });
+  };
+
+  if (isRedirect) {
+    navigate("/my-bids");
+  }
 
   return (
     <div>
@@ -43,7 +89,7 @@ const JobDetails = () => {
         </div>
       </div>
       <div className="card w-full lg:w-2/3 py-10 mx-auto px-2 md:px-10 lg:px-20 ">
-        <form className="card-body space-y-4">
+        <form onSubmit={handleBid} className="card-body space-y-4">
           <PageTitle>Place Your Bid</PageTitle>
           {/*  salary and deadline */}
           <div className="flex flex-col md:flex-row gap-6 md:gap-2">
@@ -55,6 +101,7 @@ const JobDetails = () => {
                   type="text"
                   placeholder="$ bid salay"
                   name="bidSalary"
+                  required
                   className="input input-bordered border-cyan-700 w-full"
                 />
               </label>
@@ -66,6 +113,7 @@ const JobDetails = () => {
                 <input
                   type="date"
                   name="bidDeadline"
+                  required
                   className="input input-bordered border-cyan-700 w-full"
                 />
               </label>
