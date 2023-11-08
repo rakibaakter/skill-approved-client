@@ -42,7 +42,8 @@ const Routers = createBrowserRouter([
             <JobDetails />
           </PrivateRoute>
         ),
-        loader: () => fetch(``),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/postedJob/${params.id}`),
       },
       {
         path: "/login",
