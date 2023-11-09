@@ -1,8 +1,15 @@
-# React + Vite
+# Skill Approved
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Overview
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### 1.In home page data showed by react tab based
+
+### 2. User Authentication done by Firebase
+
+### 3. Used Gif for loading state
+
+### 4. In menu responsive mode , hamburger menu move for framer motion
+
+### 5. have login and signup toggle with show password features
