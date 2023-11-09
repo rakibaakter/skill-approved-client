@@ -13,7 +13,9 @@ const MyPostedJob = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/postedJob?posterEmail=${user.email}`)
+      .get(
+        `      https://online-marketplace-server-5qhhmytgs-rakibaakter.vercel.app/postedJob?posterEmail=${user.email}`
+      )
       .then((res) => {
         setMyPostedJob(res.data);
       });
@@ -31,9 +33,12 @@ const MyPostedJob = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/postedJob/${id}`, {
-          method: "DELETE",
-        })
+        fetch(
+          `      https://online-marketplace-server-5qhhmytgs-rakibaakter.vercel.app/postedJob/${id}`,
+          {
+            method: "DELETE",
+          }
+        )
           .then((res) => res.json())
           .then((data) => {
             console.log(data);

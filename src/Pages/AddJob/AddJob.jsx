@@ -37,7 +37,10 @@ const AddJob = () => {
     console.log(newJob);
 
     axios
-      .post("http://localhost:5000/postedJob", newJob)
+      .post(
+        "      https://online-marketplace-server-5qhhmytgs-rakibaakter.vercel.app/postedJob",
+        newJob
+      )
       .then((res) => {
         console.log(res);
         if (res.data.insertedId) {

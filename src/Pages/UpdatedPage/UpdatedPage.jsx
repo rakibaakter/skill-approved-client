@@ -46,7 +46,10 @@ const UpdatedPage = () => {
     console.log(updatedJob);
 
     axios
-      .put(`http://localhost:5000/postedJob/${_id}`, updatedJob)
+      .put(
+        `      https://online-marketplace-server-5qhhmytgs-rakibaakter.vercel.app/postedJob/${_id}`,
+        updatedJob
+      )
       .then((res) => {
         console.log(res);
         if (res.data.modifiedCount > 0) {

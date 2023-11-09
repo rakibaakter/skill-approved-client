@@ -3,6 +3,7 @@ import PageBanner from "../../Component/PageBanner/PageBanner";
 import useAuthInfoHook from "../../Hooks/useAuthInfoHook";
 import axios from "axios";
 import { Helmet } from "react-helmet-async";
+import MyBidRow from "./MyBidRow";
 
 const MyBids = () => {
   const { user, status, setStatus } = useAuthInfoHook();
@@ -10,7 +11,9 @@ const MyBids = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/bid?userEmail=${user.email}`)
+      .get(
+        `https://online-marketplace-server-5qhhmytgs-rakibaakter.vercel.app/bid?userEmail=${user.email}`
+      )
       .then((res) => {
         setMybids(res.data);
       });
@@ -37,27 +40,7 @@ const MyBids = () => {
           </thead>
           <tbody>
             {mybids.map((bid) => (
-              <tr key={bid._id}>
-                <td>{bid.title}</td>
-                <td>{user.email}</td>
-                <td>{bid.posterEmail}</td>
-                <td>{bid.bidDeadline}</td>
-                <td>{status}</td>
-                <td>
-                  {status === "in progress" ? (
-                    <button
-                      onClick={() => setStatus("complete")}
-                      className="btn-accent"
-                    >
-                      Complete
-                    </button>
-                  ) : (
-                    <button disabled className="btn-accent">
-                      Complete
-                    </button>
-                  )}
-                </td>
-              </tr>
+              <MyBidRow key={bid._id} bid={bid} />
             ))}
           </tbody>
         </table>

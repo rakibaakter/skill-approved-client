@@ -62,7 +62,9 @@ const Routers = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/postedJob/${params.id}`),
+          fetch(
+            `      https://online-marketplace-server-5qhhmytgs-rakibaakter.vercel.app/postedJob/${params.id}`
+          ),
       },
       {
         path: "/update-job/:id",
@@ -72,7 +74,9 @@ const Routers = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/postedJob/${params.id}`),
+          fetch(
+            `      https://online-marketplace-server-5qhhmytgs-rakibaakter.vercel.app/postedJob/${params.id}`
+          ),
       },
       {
         path: "/login",

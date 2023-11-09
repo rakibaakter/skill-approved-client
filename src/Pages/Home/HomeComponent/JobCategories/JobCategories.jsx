@@ -3,8 +3,8 @@ import "react-tabs/style/react-tabs.css";
 import useCategoryData from "../../../../Hooks/useCategoryData";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import axios from "axios";
 import JobCard from "./JobCard";
+import axios from "axios";
 
 const JobCategories = () => {
   const categories = useCategoryData();
@@ -16,9 +16,15 @@ const JobCategories = () => {
     setSelectedCategory(name);
   };
   useEffect(() => {
-    fetch(`http://localhost:5000/postedJob?category=${selectedCategory}`)
+    fetch(
+      `     https://online-marketplace-server-5qhhmytgs-rakibaakter.vercel.app/postedJob?category=${selectedCategory}`
+    )
       .then((res) => res.json())
       .then((data) => setCategoryJob(data));
+
+    // axios
+    //   .get(`      https://online-marketplace-server-5qhhmytgs-rakibaakter.vercel.app/postedJob?category=${selectedCategory}`)
+    //   .then((res) => setCategoryJob(res.data));
   }, [selectedCategory]);
 
   return (

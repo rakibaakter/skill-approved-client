@@ -15,7 +15,6 @@ const JobDetails = () => {
   const navigate = useNavigate();
 
   const {
-    _id,
     title,
     posterEmail,
     deadline,
@@ -45,7 +44,10 @@ const JobDetails = () => {
     console.log(bidRequest);
 
     axios
-      .post("http://localhost:5000/bid", bidRequest)
+      .post(
+        ` https://online-marketplace-server-5qhhmytgs-rakibaakter.vercel.app/bid`,
+        bidRequest
+      )
       .then((res) => {
         console.log(res);
         if (res.data.insertedId) {

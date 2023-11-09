@@ -3,17 +3,20 @@ import PageBanner from "../../Component/PageBanner/PageBanner";
 import useAuthInfoHook from "../../Hooks/useAuthInfoHook";
 import axios from "axios";
 import { Helmet } from "react-helmet-async";
+import BidRequestRow from "./BidRequestRow";
 
 const BidRequest = () => {
   const { user, status, setStatus } = useAuthInfoHook();
   const [isdisbale, setDisable] = useState(false);
-  const [mybids, setMybids] = useState([]);
+  const [mybidRequests, setMybidRequests] = useState([]);
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/bid?posterEmail=${user.email}`)
+      .get(
+        `      https://online-marketplace-server-5qhhmytgs-rakibaakter.vercel.app/bid?posterEmail=${user.email}`
+      )
       .then((res) => {
-        setMybids(res.data);
+        setMybidRequests(res.data);
       });
   }, [user]);
 
@@ -42,27 +45,8 @@ const BidRequest = () => {
             </tr>
           </thead>
           <tbody>
-            {mybids.map((bid) => (
-              <tr key={bid._id}>
-                <td>{bid.title}</td>
-                <td>{bid.userEmail}</td>
-                <td>{bid.bidDeadline}</td>
-                <td>${bid.bidSalary}</td>
-                <td>{bid.status}</td>
-                <td>
-                  <button
-                    onClick={() => handleAcceptBtn(bid._id)}
-                    className="btn btn-success "
-                  >
-                    Accept
-                  </button>
-                </td>
-                <td>
-                  <button onClick={handleRejectBtn} className="btn btn-error  ">
-                    Reject
-                  </button>
-                </td>
-              </tr>
+            {mybidRequests.map((bid) => (
+              <BidRequestRow key={bid._id} bid={bid} />
             ))}
           </tbody>
         </table>

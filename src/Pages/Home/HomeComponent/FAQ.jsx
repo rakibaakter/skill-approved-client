@@ -8,8 +8,8 @@ const FAQ = () => {
         backgroundImage: `url(${question})`,
       }}
     >
-      <div className="hero-overlay bg-opacity-90"></div>
-      <div className="text-white">
+      <div className="hero-overlay bg-opacity-90 "></div>
+      <div className="text-white py-10">
         <h2 className="my-8 text-center text-3xl font-bold text-cyan-700">
           Frequently Ask Questions?
         </h2>
