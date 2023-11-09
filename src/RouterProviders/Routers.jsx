@@ -63,7 +63,7 @@ const Routers = createBrowserRouter([
         ),
         loader: ({ params }) =>
           fetch(
-            `      https://online-marketplace-server-5qhhmytgs-rakibaakter.vercel.app/postedJob/${params.id}`
+            `       https://online-marketplace-server-j666mjnnd-rakibaakter.vercel.app/postedJob/${params.id}`
           ),
       },
       {
@@ -75,7 +75,7 @@ const Routers = createBrowserRouter([
         ),
         loader: ({ params }) =>
           fetch(
-            `      https://online-marketplace-server-5qhhmytgs-rakibaakter.vercel.app/postedJob/${params.id}`
+            `       https://online-marketplace-server-j666mjnnd-rakibaakter.vercel.app/postedJob/${params.id}`
           ),
       },
       {

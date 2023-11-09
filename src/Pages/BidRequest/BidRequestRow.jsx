@@ -18,7 +18,7 @@ const BidRequestRow = ({ bid }) => {
 
     axios
       .put(
-        `  https://online-marketplace-server-5qhhmytgs-rakibaakter.vercel.app/bid/${id}`,
+        `   https://online-marketplace-server-j666mjnnd-rakibaakter.vercel.app/bid/${id}`,
         updatedBid
       )
       .then((res) => {
@@ -42,7 +42,7 @@ const BidRequestRow = ({ bid }) => {
 
     axios
       .put(
-        `  https://online-marketplace-server-5qhhmytgs-rakibaakter.vercel.app/bid/${id}`,
+        `https://online-marketplace-server-j666mjnnd-rakibaakter.vercel.app/bid/${id}`,
         updatedBid
       )
       .then((res) => {

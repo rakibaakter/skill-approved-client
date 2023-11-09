@@ -38,7 +38,7 @@ const AddJob = () => {
 
     axios
       .post(
-        "      https://online-marketplace-server-5qhhmytgs-rakibaakter.vercel.app/postedJob",
+        "       https://online-marketplace-server-j666mjnnd-rakibaakter.vercel.app/postedJob",
         newJob
       )
       .then((res) => {

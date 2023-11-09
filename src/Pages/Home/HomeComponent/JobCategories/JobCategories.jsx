@@ -17,13 +17,13 @@ const JobCategories = () => {
   };
   useEffect(() => {
     fetch(
-      `     https://online-marketplace-server-5qhhmytgs-rakibaakter.vercel.app/postedJob?category=${selectedCategory}`
+      `      https://online-marketplace-server-j666mjnnd-rakibaakter.vercel.app/postedJob?category=${selectedCategory}`
     )
       .then((res) => res.json())
       .then((data) => setCategoryJob(data));
 
     // axios
-    //   .get(`      https://online-marketplace-server-5qhhmytgs-rakibaakter.vercel.app/postedJob?category=${selectedCategory}`)
+    //   .get(`       https://online-marketplace-server-j666mjnnd-rakibaakter.vercel.app/postedJob?category=${selectedCategory}`)
     //   .then((res) => setCategoryJob(res.data));
   }, [selectedCategory]);
 

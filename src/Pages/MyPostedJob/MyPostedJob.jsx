@@ -14,7 +14,7 @@ const MyPostedJob = () => {
   useEffect(() => {
     axios
       .get(
-        `      https://online-marketplace-server-5qhhmytgs-rakibaakter.vercel.app/postedJob?posterEmail=${user.email}`
+        `       https://online-marketplace-server-j666mjnnd-rakibaakter.vercel.app/postedJob?posterEmail=${user.email}`
       )
       .then((res) => {
         setMyPostedJob(res.data);
@@ -34,7 +34,7 @@ const MyPostedJob = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         fetch(
-          `      https://online-marketplace-server-5qhhmytgs-rakibaakter.vercel.app/postedJob/${id}`,
+          `       https://online-marketplace-server-j666mjnnd-rakibaakter.vercel.app/postedJob/${id}`,
           {
             method: "DELETE",
           }

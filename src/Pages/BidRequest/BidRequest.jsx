@@ -13,7 +13,7 @@ const BidRequest = () => {
   useEffect(() => {
     axios
       .get(
-        `      https://online-marketplace-server-5qhhmytgs-rakibaakter.vercel.app/bid?posterEmail=${user.email}`
+        `       https://online-marketplace-server-j666mjnnd-rakibaakter.vercel.app/bid?posterEmail=${user.email}`
       )
       .then((res) => {
         setMybidRequests(res.data);
