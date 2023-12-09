@@ -6,7 +6,8 @@ https://assignment11-375b6.web.app/
 
 ## Techology
 
-### React | React-Router-Dom | React Helmet | Tailwind | Daisy UI
+### React | React-Router-Dom | React Helmet | react-infinite-scroll-component | React form hook | swiper | react-rating
+### Tailwind | Daisy UI
 ### Firebase
 ### Express
 ### CRUD operation on MongoDB 
