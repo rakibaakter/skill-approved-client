@@ -4,6 +4,13 @@
 
 https://assignment11-375b6.web.app/
 
+## Techology
+
+### React | React-Router-Dom | React Helmet | Tailwind | Daisy UI
+### Firebase
+### Express
+### CRUD operation on MongoDB 
+
 ## Features
 
 ### 1.In home page data showed by react tab based
